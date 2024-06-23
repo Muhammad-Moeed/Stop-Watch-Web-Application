@@ -1,0 +1,14 @@
+body{
+    background-color: blue;
+    text-align: center;
+}
+h1{
+    display: inline-block;
+    width: 180px;
+    background-color: wheat;
+}
+.head{
+    text-align: center;
+    color: white;
+    font-size: 3em;
+}
