@@ -1,52 +1,34 @@
-var interval;
-var hour = 0;
-var min = 0;
-var sec = 0;
-var msec = 0;
+let timer;
+let seconds = 0;
+let isPaused = false;
 
-var hourHead = document.getElementById("hour");
-var minHead = document.getElementById("min");
-var secHead = document.getElementById("sec");
-var msecHead = document.getElementById("msec");
-
-function startTimer() {
-    msec++;
-    msecHead.innerHTML = msec;
-    if (msec >= 100) {
-        sec++;
-        secHead.innerHTML = sec;
-        msec = 0;
-    }
-    else if (sec >= 60) {
-        min++;
-        minHead.innerHTML = min;
-        sec = 0;
-    }
-    else if (min >= 60) {
-        hour++;
-        hourHead.innerHTML = hour;
-        min = 0;
-    }
-
+function updateDisplay() {
+    const timeDisplay = document.querySelector('.time');
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    timeDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
-// setInterval(startTimer, 10)
-
-function start() {
-    interval = setInterval(startTimer, 10)
+function startStopwatch() {
+    if (!timer) {
+        timer = setInterval(() => {
+            if (!isPaused) {
+                seconds++;
+                updateDisplay();
+            }
+        }, 1000);
+    }
 }
-function pause() {
-    clearInterval(interval);
+
+function pauseStopwatch() {
+    isPaused = true;
 }
-function reset() {
 
-     hour = 0;
-     min = 0;
-     sec = 0;
-     msec = 0;
-
-     hourHead.innerHTML =hour;
-     minHead.innerHTML =min;
-     secHead.innerHTML =sec;
-     msecHead.innerHTML =msec;
+function resetStopwatch() {
+    clearInterval(timer);
+    timer = null;
+    seconds = 0;
+    isPaused = false;
+    updateDisplay();
 }

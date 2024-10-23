@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        stop watch
-    </title>
+    <title>Stylish Stopwatch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="stop.css">
 </head>
 <body>
-    <div class="head">Stop Watch</div>
-   <div>
-    <h1 id="hour">0</h1>
-    <h1 id="min">0</h1>
-    <h1 id="sec">0</h1>
-    <h1 id="msec">0</h1>
-   </div> 
-   <div>
-    <button onclick="start()" >Start</button>
-    <button onclick="pause()" >Pause</button>
-    <button onclick="reset()" >Reset</button>
-   </div>
+    <h1 class="head" style="background-color: black; padding: 5px; color:  #00d3ff;">Stopwatch Application By Moeed Qadri</h1>
+    <div class="relative">
+        <div class="outer-ring"></div>
+        <div class="stopwatch">
+            <div class="time">00:00:00</div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button onclick="startStopwatch()">Start</button>
+        <button onclick="pauseStopwatch()">Pause</button>
+        <button onclick="resetStopwatch()">Reset</button>
+    </div>
+
+
+        
+<script src="stop.js"></script>    
 </body>
-<script src="stop.js"></script>
 </html>
